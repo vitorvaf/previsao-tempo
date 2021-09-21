@@ -6,10 +6,16 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PrevisaoTempo.Application.SearchUser;
+using PrevisaoTempo.Application.SearchUser.Interfaces;
+using PrevisaoTempo.Data.Context;
+using PrevisaoTempo.Data.Repository;
+using PrevisaoTempo.Domain.Interfaces;
 
 namespace PrevisaoTempo.WebApi
 {
@@ -26,6 +32,14 @@ namespace PrevisaoTempo.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>
+                 (options => options.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=password"));
+            services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+            services.AddScoped<ISearchUserRepository, SearchUserRepository>();
+            services.AddScoped<ISearchUserAppService, SearchUserAppService>();
+
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
