@@ -3,18 +3,18 @@ using PrevisaoTempo.Domain.Validation;
 
 namespace PrevisaoTempo.Domain.Entities
 {
-    public class SearchUser
-    {
+    public class SearchUser : Entidade
+    {        
         public string Name { get; private set; }
         public int Temp { get; private set; }
         public string Weather{ get; private set; }
         public string Humidity { get; private set; }
         public string Icon { get; private set; }
+        public DateTime CreationDate { get; set; }
 
         public SearchUser(string name, int? temp, string weather, string humidity, string Icon)
         {
-            ValidationEntitie(name,temp,weather,humidity,Icon);
-            
+            ValidationEntitie(name,temp,weather,humidity,Icon);            
         }
 
         private void ValidationEntitie(string name, int? temp, string weather, string humidity, string icon)

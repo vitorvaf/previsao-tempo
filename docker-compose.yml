@@ -1,0 +1,18 @@
+version: '3.4'
+services:
+  sistemavotacao.api:
+    image: ${DOCKER_REGISTRY-}searchweather
+    build:
+      context: .
+      dockerfile: api/PrevisaoTempo.WebApi/Dockerfile
+    depends_on:
+        - database
+  database:
+    container_name: database
+    image: postgres:latest
+    ports: 
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
