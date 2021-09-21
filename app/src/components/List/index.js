@@ -14,8 +14,7 @@ const List = (props) => {
         />
         <div className="description">{props.city.weather}</div>
       </div>
-      <div className="humidity">Humidity: {props.city.humidity}%</div>
-      {/* <div className="wind">Wind speed: 6.2 km/h</div> */}
+      <div className="humidity">Humidity: {props.city.humidity}%</div>      
     </div>
   );
 };
