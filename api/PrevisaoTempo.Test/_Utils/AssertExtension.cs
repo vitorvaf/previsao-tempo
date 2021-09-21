@@ -1,4 +1,6 @@
 using Xunit;
+using PrevisaoTempo.Domain.Validation;
+
 
 namespace PrevisaoTempo.Test._Utils
 {

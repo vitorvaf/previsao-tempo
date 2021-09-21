@@ -14,8 +14,6 @@ namespace PrevisaoTempo.Domain.Validation
         {
             if(hasError)
                 throw new DomainExceptionValidation(error);
-        }
-        
-    }
-    
+        }        
+    }    
 }
