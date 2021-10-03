@@ -1,24 +1,11 @@
-
-import api from './api';
-
-const API_KEY = '0649a1d57566b8d5fbc8d9c1cae39adf';
+import api from "./api";
 
 const searchCity = async (cityName) => {
-    try {
-        return await api.get(`?q=${cityName}&appid=${API_KEY}`);       
-        
-    } catch (error) {
-        console.log(error);        
-    }
-}
-
+  try {
+    return await api.get(`/search/getweather/?cityName=${cityName}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export default searchCity;
-
-
-
-
-
-
-
-

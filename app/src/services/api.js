@@ -1,7 +1,8 @@
-import axios from 'axios'
+import axios from "axios";
+
 
 const api = axios.create({
-  baseURL: `http://api.openweathermap.org/data/2.5/weather`
-})
+  baseURL: `https://localhost:5001`
+});
 
-export default api 
+export default api;

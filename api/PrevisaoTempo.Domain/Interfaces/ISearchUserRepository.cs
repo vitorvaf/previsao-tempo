@@ -4,6 +4,7 @@ namespace PrevisaoTempo.Domain.Interfaces
 {
     public interface ISearchUserRepository: IRepository<SearchUser>
     {
+        
          
     }
 }

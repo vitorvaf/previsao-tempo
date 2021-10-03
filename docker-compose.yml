@@ -1,6 +1,22 @@
 version: '3.4'
 services:
-  sistemavotacao.api:
+  previsaotempo.app:
+    image: ${DOCKER_REGISTRY-}searchweatherApp
+    container_name: previsaotempo-app
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '3001:3000'
+    environment:
+      - NODE_ENV=development     
+    depends_on:
+        - previsaotempo.api
+  previsaotempo.api:
+    container_name: previsaotempo.api
     image: ${DOCKER_REGISTRY-}searchweather
     build:
       context: .
