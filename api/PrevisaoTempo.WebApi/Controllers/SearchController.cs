@@ -17,17 +17,20 @@ namespace PrevisaoTempo.WebApi.Controllers
         public SearchController(ISearchUserAppService service)
         {
             _service = service;
-            
-        }      
+
+        }
 
         [HttpGet]
-        public IActionResult SearchWeather(string cityname)
+        [Route("getweather")]
+        public IActionResult SearchWeather([FromQuery] string cityname)
         {
-            var city = _service.SearchWeather(cityname);
+            var city = _service.getInfoWeatherByCityname(cityname);
 
-            if(city is null)
-                return NotFound();
-            
+            if (city is null)
+            {
+                return NotFound(cityname);
+            }
+
             return Ok(city);
         }
 
@@ -38,9 +41,5 @@ namespace PrevisaoTempo.WebApi.Controllers
 
             return Ok(history.ToArray());
         }
-
-
-
-        
     }
 }

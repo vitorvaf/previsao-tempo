@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using PrevisaoTempo.Application.SearchUser;
 using PrevisaoTempo.Application.SearchUser.Interfaces;
 using PrevisaoTempo.Data.Context;
+using PrevisaoTempo.Data.ExternalServices;
 using PrevisaoTempo.Data.Repository;
 using PrevisaoTempo.Domain.Interfaces;
 
@@ -31,15 +32,17 @@ namespace PrevisaoTempo.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();   
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>
                  (options => options.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=password"));
             services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
             services.AddScoped<ISearchUserRepository, SearchUserRepository>();
             services.AddScoped<ISearchUserAppService, SearchUserAppService>();
+            services.AddScoped<IOpenWeatherApi, OpenWeatherApi>();
 
 
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +56,8 @@ namespace PrevisaoTempo.WebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(option => option.AllowAnyOrigin());            
 
             app.UseAuthorization();
 
