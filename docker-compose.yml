@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   previsaotempo.app:
-    image: ${DOCKER_REGISTRY-}searchweatherApp
+    image: ${DOCKER_REGISTRY-}searchweatherapp
     container_name: previsaotempo-app
     build:
       context: .
