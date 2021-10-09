@@ -1,14 +1,15 @@
 # build environment
-FROM node:16-alpine as build
+FROM node:latest
+# Diretório de trabalho(é onde a aplicação ficará dentro do container).
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
-COPY app/package*.json /app/
-RUN npm cache clean --force
-RUN npm install -- silent
-RUN npm install react-scripts -g -- silent
-COPY . /app
-RUN npm run build
-FROM nginx:1.16.0-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD [“nginx”, “-g”, “daemon off;”]
+
+# Instalando dependências da aplicação e armazenando em cache.
+COPY app/package.json ./
+
+RUN npm install 
+RUN npm install react-scripts -g 
+
+COPY . .
+# Inicializa a aplicação
+CMD ["npm", "start"]
+

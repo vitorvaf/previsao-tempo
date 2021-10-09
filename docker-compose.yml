@@ -11,8 +11,6 @@ services:
       - '/app/node_modules'
     ports:
       - '3001:3000'
-    environment:
-      - NODE_ENV=development     
     depends_on:
         - previsaotempo.api
   previsaotempo.api:
@@ -22,9 +20,9 @@ services:
       context: .
       dockerfile: api/PrevisaoTempo.WebApi/Dockerfile
     depends_on:
-        - database
-  database:
-    container_name: database
+        - previsaotempo.db
+  previsaotempo.db:
+    container_name: previsaotempo.db
     image: postgres:latest
     ports: 
       - "5432:5432"
