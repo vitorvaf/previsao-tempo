@@ -12,6 +12,11 @@ namespace PrevisaoTempo.Domain.Entities
         public string Icon { get; private set; }
         public DateTime CreationDate { get; set; }
 
+
+        public SearchUser()
+        {
+
+        }
         public SearchUser(string name, int? temp, string weather, string humidity, string Icon)
         {
             ValidationEntitie(name,temp,weather,humidity,Icon);            
@@ -40,6 +45,7 @@ namespace PrevisaoTempo.Domain.Entities
             Weather = weather;
             Humidity = humidity;
             Icon = icon;
+            CreationDate = DateTime.Now;
 
         }
     }

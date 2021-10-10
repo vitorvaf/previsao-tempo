@@ -57,9 +57,13 @@ namespace PrevisaoTempo.Data.Context
                     .IsRequired()
                     .HasColumnName("name");
 
+                    entity.Property(e => e.Humidity)
+                    .IsRequired()
+                    .HasColumnName("humidity");
+
                 entity.Property(e => e.CreationDate)
                     .IsRequired()
-                    .HasColumnName("creationDate");                
+                    .HasColumnName("creationdate");        
             });
           
         }        

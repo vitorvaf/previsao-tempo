@@ -8,6 +8,7 @@ CREATE TABLE search_user (
   name VARCHAR(255) NOT NULL,
   temp INTEGER NOT NULL,
   weather TEXT NOT NULL,
+  humidity TEXT NOT NULL,
   icon TEXT NOT NULL,
   creationDate DATE NOT NULL
 

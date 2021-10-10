@@ -35,6 +35,7 @@ namespace PrevisaoTempo.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("list-all")]
         public IActionResult ListHistory()
         {
             var history = _service.ListHistorySearch();

@@ -18,6 +18,8 @@ namespace PrevisaoTempo.Data.Repository
         public void Add(TEntidade entity)
         {
             Context.Set<TEntidade>().Add(entity);
+            Context.SaveChanges();
+            
         }
 
         public virtual TEntidade GetById(int id)

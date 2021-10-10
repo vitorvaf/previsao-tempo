@@ -1,44 +1,44 @@
 import React, { useEffect, useState } from "react";
 import searchCity from "../../services/city";
 import List from "../List";
+import History from "../History";
 
 import "./index.css";
 
 function Card() {
   const [cityName, setCityName] = useState("");
-  const [cityData, setCityData] = useState();  
+  const [cityData, setCityData] = useState();
 
   useEffect(() => {
-    if(cityName.length === 0)
-      setCityData();
+    if (cityName.length === 0) setCityData();
   }, [cityName]);
 
   const onKeyUp = (event) => {
     if (event.charCode === 13) {
       search();
     }
-  }
+  };
 
   const search = async () => {
-    var response = await searchCity(cityName);   
+    var response = await searchCity(cityName);
 
-    if(response && response.status === 200){
+    if (response && response.status === 200) {
       console.log(response.data);
       setCityData({
         name: response.data.name,
         temp: response.data.main.temp,
         humidity: response.data.main.humidity,
         weather: response.data.weather[0].main,
-        icon:response.data.weather[0].icon
-
-      })
-    }else{
+        icon: response.data.weather[0].icon,
+      });
+    } else {
       setCityData();
     }
   };
 
   return (
     <>
+      <History />
       <div className="search">
         <input
           type="text"

@@ -1,3 +1,5 @@
+using System;
+
 namespace PrevisaoTempo.Application.SearchUser.DTO
 {
     public class SearchResultDTO
@@ -8,6 +10,7 @@ namespace PrevisaoTempo.Application.SearchUser.DTO
         public string Weather { get; set; }
         public string Humidity { get; set; }
         public string Icon { get; set; }
+        public DateTime CreationDate { get; set; }
         
     }
 }

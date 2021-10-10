@@ -13,7 +13,8 @@ namespace PrevisaoTempo.Application.SearchUser.Adapters
             Temp = search.Temp,
             Weather = search.Weather,
             Humidity = search.Humidity,
-            Icon = search.Icon
+            Icon = search.Icon,
+            CreationDate = search.CreationDate
         };
     }
 }
